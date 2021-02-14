@@ -148,16 +148,28 @@ class FormApp{
             error_arr = error_arr.filter(item => item !=='valid');
             const error = error_arr.length > 0 ? error_arr[0]:'';
             let msg = field.parentElement.querySelector(`.display-msg`);
+            let msgClist = msg.classList;
             err_content = FormApp.errorMsg.hasOwnProperty(error) ? FormApp.errorMsg[error]:'';
-            if (msg){
-                msg.textContent = err_content;
-            }
+            let durationNumber = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--durationNumber'));
+            let cList = field.parentElement.classList;
 
             if ( error_arr.length > 0 ){
                 this.form.classList.add(`was-validated`);
-                field.parentElement.classList.add(`field--invalid`);
+                if (!msgClist.contains(`slide-out`)){
+                    msg.textContent = err_content;
+                    cList.add(`field--invalid`);
+                } else {
+                    setTimeout(function(){
+                        msg.textContent = err_content;
+                        cList.add(`field--invalid`);
+                    }, 180);
+                }
             } else {
-                field.parentElement.classList.remove(`field--invalid`);
+                msgClist.add(`slide-out`);
+                setTimeout(function(){
+                    cList.remove(`field--invalid`);
+                    msgClist.remove(`slide-out`);
+                }, 180)
             }
         }
         return err_content.length > 0 ? false : true;
@@ -175,7 +187,6 @@ function ready(fn) {
 ready(() => {
     const init = () => {
         const myForm = new FormApp("myform");
-        console.log(myForm.fields)
         myForm.init();
     }    
     
