@@ -126,7 +126,12 @@ class FormApp{
             return this.validateField(field);
         }).filter(field => !field);
         if (arr.length === 0){
-            window.alert("SUBMIT SUCCESSFUL");
+            let str = this.fields.map(field => {
+                let key = field.labels[0].textContent;
+                let value = FormApp.getValueFromInput(field)
+                return `${key}: ${value}`;
+            }).join(`\n`);
+            window.alert("SUBMIT SUCCESSFUL\n\n" + str);
         }
     }
 
@@ -157,13 +162,6 @@ class FormApp{
         }
         return err_content.length > 0 ? false : true;
     }
-    /*
-    validateFields = () => {
-        let err = this.fields.map(field => {
-            return this.validateField(field);
-        }).filter(field => field);
-        console.log(err);
-    }*/
 }
 
 function ready(fn) {
@@ -177,10 +175,10 @@ function ready(fn) {
 ready(() => {
     const init = () => {
         const myForm = new FormApp("myform");
-        myForm.init();
         console.log(myForm.fields)
-    }
-    
+        myForm.init();
+    }    
     
     init();
+
 });
