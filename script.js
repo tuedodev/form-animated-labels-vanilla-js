@@ -10,16 +10,16 @@ class FormApp{
             this.submitButton = this.form.querySelector(`button[type="submit"]`);
         }
     }
-    // Customized Error Messages compatible to ValidityState of Validation API
+    // Customized Error Messages. Keys compatible to ValidityState of Validation API
     static errorMsg = {
-        valueMissing: "Mandatory field",
-        typeMismatch: "Invalid Email address",
+        valueMissing: "Please enter the mandatory input fields.",
+        typeMismatch: "Please enter a valid Email address.",
         patternMismatch: "Your input doesn´t match the pattern.",
         tooLong: "Your input is too long.",
         tooShort: "Your input is too short.",
         rangeUnderflow: "Your input is below the allowed range.",
         rangeOverflow: "Your input is beyond the allowed range.",
-        stepMismatch: "Your input doesn´t fit the rules",
+        stepMismatch: "Your input doesn´t fit the rules.",
         badInput: "Browser cannot handle your input.",
         customError: "A custom error occured."
     }
@@ -49,20 +49,10 @@ class FormApp{
 	};
 
     init = () => {
-        //this.disableSubmitButton();
         this.form.setAttribute('novalidate', true);
         this.registerEventListeners();
     }
 
-    disableSubmitButton = () => {
-        if (this.submitButton){
-            this.submitButton.addEventListener('click', this.handleSubmitButton.bind(this));
-        }
-    }
-    handleSubmitButton(event){
-        event.preventDefault();
-        this.handleSubmit();
-    }
     registerEventListeners = () => {
         const currentlySupportedTypes = [`text`, `email`, `password`, `number`, `tel`, `time`, `url`, `textarea`, `checkbox`];
         const eventListeners = [
@@ -87,6 +77,7 @@ class FormApp{
                 })
             }
         })
+
         if (this.form){
             this.form.addEventListener('submit', this.handleSubmit)
         }
