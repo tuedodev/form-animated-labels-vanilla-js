@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="dist/css/main.min.css">
-    <title>Form with animated labels in pure Vanilla Javascript</title>
+    <title>Form with Floated Labels in Vanilla Javascript</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -13,40 +13,40 @@
             <div class="col-10 col-sm-8 col-md-6 col-lg-5">
                 <div class="card shadow-lg card--bg-gray card--customized">
                     <div class="card-body">
-                        <h1 class="card-title">Form with animated labels in pure Vanilla Javascript</h1>
+                        <h1 class="card-title">Form with Floated Labels in Vanilla Javascript</h1>
                         <form id="myform">
-                            <div class="mb-2 control-wrapper">
+                            <div class="control-wrapper mb-2">
                                 <div class="label-container">
-                                    <label for="exampleInputText" class="form-label">Your name (CAPITAL LETTERS only)</label>
+                                    <label for="inputName" class="form-label">Your name (CAPITAL LETTERS only)</label>
                                 </div>
-                                <input type="text" class="form-control" id="exampleInputText" required pattern="[A-Z]*">
+                                <input type="text" class="form-control" id="inputName" required pattern="[A-Z]*">
                                 <div class="display-msg"></div>
                             </div>
-                            <div class="mb-2 control-wrapper">
+                            <div class="control-wrapper mb-2">
                                 <div class="label-container">
-                                    <label for="exampleInputEmail" class="form-label">Email address</label>
+                                    <label for="inputEmail" class="form-label">Email address</label>
                                 </div>
-                                <input type="email" class="form-control" id="exampleInputEmail">
+                                <input type="email" class="form-control" id="inputEmail">
                                 <div class="display-msg"></div>
                             </div>
-                            <div class="mb-2 control-wrapper">
+                            <div class="control-wrapper mb-2">
                                 <div class="label-container">
-                                    <label for="exampleInputPassword" class="form-label">Password</label>
+                                    <label for="inputPassword" class="form-label">Password</label>
                                 </div>
-                                <input type="password" class="form-control" id="exampleInputPassword" minlength="3" maxlength="10">
+                                <input type="password" class="form-control" id="inputPassword" minlength="3" maxlength="10">
                                 <div class="display-msg"></div>
                             </div>
-                            <div class="mb-2 control-wrapper">
+                            <div class="control-wrapper mb-2">
                                 <div class="label-container">
-                                    <label for="exampleTextarea" class="form-label">Your message</label>
+                                    <label for="inputTextarea" class="form-label">Your message</label>
                                 </div>
-                                <textarea class="form-control" id="exampleTextarea" rows="3" required></textarea>
+                                <textarea class="form-control" id="inputTextarea" rows="3" required></textarea>
                                 <div class="display-msg"></div>
                             </div>
-                            <div class="mb-4 form-check control-wrapper">
+                            <div class="form-check control-wrapper mb-4">
                                 <div class="label-container">
-                                    <label class="form-check-label" for="exampleCheck">I have read your private policy and hereby confirm it.</label>
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck" required>
+                                    <label class="form-check-label" for="inputCheckbox">I have read your private policy and hereby confirm it.</label>
+                                    <input type="checkbox" class="form-check-input" id="inputCheckbox" required>
                                     <div class="display-msg"></div>
                                 </div>
                             </div>
