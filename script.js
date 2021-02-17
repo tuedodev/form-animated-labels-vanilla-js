@@ -7,7 +7,6 @@ class FormApp{
             this.fields.forEach(field => {
                 FormApp.checkIfFieldIsFilled(field);
             })
-            this.submitButton = this.form.querySelector(`button[type="submit"]`);
         }
     }
     // Customized Error Messages. Keys compatible to ValidityState of Validation API
@@ -153,14 +152,14 @@ class FormApp{
                     setTimeout(function(){
                         msg.textContent = err_content;
                         cList.add(`field--invalid`);
-                    }, 180);
+                    }, durationNumber);
                 }
             } else {
                 msgClist.add(`slide-out`);
                 setTimeout(function(){
                     cList.remove(`field--invalid`);
                     msgClist.remove(`slide-out`);
-                }, 180)
+                }, durationNumber)
             }
         }
         return err_content.length > 0 ? false : true;
