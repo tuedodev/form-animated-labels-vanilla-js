@@ -116,6 +116,7 @@ class FormApp{
             return this.validateField(field);
         }).filter(field => !field);
         if (arr.length === 0){
+            // No Errors client-side: Here you would process the data
             let str = this.fields.map(field => {
                 let key = field.labels[0].textContent;
                 let value = FormApp.getValueFromInput(field)
@@ -142,17 +143,17 @@ class FormApp{
             err_content = FormApp.errorMsg.hasOwnProperty(error) ? FormApp.errorMsg[error]:'';
             let durationNumber = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--durationNumber'));
             let cList = field.parentElement.classList;
+            let setFieldInvalid = () => {
+                msg.textContent = err_content;
+                cList.add(`field--invalid`);
+            }
 
             if ( error_arr.length > 0 ){
                 this.form.classList.add(`was-validated`);
                 if (!msgClist.contains(`slide-out`)){
-                    msg.textContent = err_content;
-                    cList.add(`field--invalid`);
+                    setFieldInvalid();
                 } else {
-                    setTimeout(function(){
-                        msg.textContent = err_content;
-                        cList.add(`field--invalid`);
-                    }, durationNumber);
+                    setTimeout(setFieldInvalid, durationNumber);
                 }
             } else {
                 msgClist.add(`slide-out`);
