@@ -180,7 +180,5 @@ ready(() => {
         const myForm = new FormApp("myform");
         myForm.init();
     }    
-    
     init();
-
 });
